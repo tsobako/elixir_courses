@@ -13,11 +13,7 @@ stateDiagram
 
     }
     state Work {
-        [*] -> Coding
-        Coding -> Review
-        Coding -> Meeting
-        Meeting -> Lunch
-        Coding -> [*]
+    
     }
     state EveningRoutine {
 
