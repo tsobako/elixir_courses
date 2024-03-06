@@ -11,13 +11,13 @@ stateDiagram
 
     state MorningRoutine {
         [*] --> Toilet
-        Toilet --> WearingClothes : ToiletProceduresFinished
-        WearingClothes --> WalkingWithDog : WearingFinished
+        Toilet --> WearingHomeClothes : ToiletProceduresFinished
+        WearingHomeClothes --> WalkingWithDog : WearingFinished
         WalkingWithDog --> DogFeeding : GetBackToHome
         DogFeeding --> Breakfast : BreakfastPrepared
         Breakfast --> Shower : BreakfastFinished
-        Shower --> WearingClothes : ShowerFinished
-        WearingClothes --> WalkingToCar : WearingFinished
+        Shower --> WearingWorkClothes : ShowerFinished
+        WearingWorkClothes --> WalkingToCar : WearingFinished
         WalkingToCar --> [*]
     }
     state Work {
@@ -43,8 +43,8 @@ stateDiagram
         Dining --> WalkingWithDog : DiningFinished
         WalkingWithDog --> DogFeeding : GetBackToHome
         DogFeeding --> Shower : DogFed
-        Shower --> WearingClothes : ShowerFinished
-        WearingClothes --> PrepareToSleep : UnwearingFinished
+        Shower --> UnwearingHomeClothes : ShowerFinished
+        UnwearingHomeClothes --> PrepareToSleep : UnwearingFinished
         PrepareToSleep --> [*]
     }
 ```
