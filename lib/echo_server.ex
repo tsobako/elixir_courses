@@ -8,4 +8,9 @@ defmodule EchoServer do
   def handle_call(:ping, _, state) do
     {:reply, {:pong, self()}, state}
   end
+
+  def handle_cast({:ping, sender}, state) do
+      GenServer.cast(sender, :pong)
+      {:noreply, state}
+  end
 end

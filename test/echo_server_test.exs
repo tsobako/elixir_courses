@@ -4,17 +4,15 @@ defmodule EchoServerTest do
   doctest EchoServer
 
   test "echo server fails when received unknown message" do
-    {:ok, pid} = GenServer.start_link(EchoServer, {})
-
-    # По задумке это должно работать, но я так понимаю, что это неправильно
     assert_raise FunctionClauseError, fn ->
-      GenServer.call(pid, :foobar)
+      # Тест стал чистым
+      EchoServer.handle_call(:unknown, {}, {})
     end
   end
 
   test "echo server works properly with ping message" do
-    {:ok, pid} = GenServer.start_link(EchoServer, {})
-    message = GenServer.call(pid, :ping)
-    assert message == {:pong, pid}
+    # И этот тест стал на 99% чистым
+    pid = self()
+    assert {:reply, {:pong, ^pid}, {}} = EchoServer.handle_call(:ping, {}, {})
   end
 end
