@@ -10,12 +10,19 @@ stateDiagram
     Sleep --> [*]
 
     state MorningRoutine {
+        [*] --> Shower
 
+        WearClothes --> [*]
     }
     state Work {
-    
-    }
-    state EveningRoutine {
+        [*] --> Driving
 
+
+        Driving --> [*]
+     }
+    state EveningRoutine {
+        [*] --> Dining
+
+        PrepareToSleep --> [*]
     }
 ```
