@@ -3,7 +3,7 @@
 ```mermaid
 stateDiagram
     [*] --> Sleep
-    Sleep --> MorningRoutine
+    Sleep --> MorningRoutine : AlarmClock
     MorningRoutine --> Work
     Work --> EveningRoutine
     EveningRoutine --> Sleep
@@ -16,8 +16,9 @@ stateDiagram
     }
     state Work {
         [*] --> Driving
+        Driving --> WalkingToOffice : FreeCarPlaceReached
 
-
+        WalkingToCar --> Driving : CarReached
         Driving --> [*]
      }
     state EveningRoutine {
